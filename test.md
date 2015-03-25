@@ -7,7 +7,7 @@ See: http://git-scm.com/docs/git-config
 
 ```
 git config user.name "Your Name"
-git config user.email "your.name@rocket-internet.de"
+git config user.email "your.email@gmail.com"
 
 # prevent pushing all locally modified branches if the branch to push is not specified while 'git push'
 git config push.default nothing
