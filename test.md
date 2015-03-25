@@ -36,13 +36,13 @@ git push origin DMA-123
 First we can list all the branches (-a shows also the remote ones), and then checkout the branch we need (checkout will switch to the just created branch).
 ```
 git branch -a
-git checkout -b TML-123 # same as "git checkout --track -b TML-123 origin/TML-123", if a local branch does not exists with this name yet but a remote one does then git creates the local branch and tracks them automatically to it
+git checkout -b TML-123 # same as "git checkout --track -b DMA-123 origin/DMA-123", if a local branch does not exists with this name yet but a remote one does then git creates the local branch and tracks them automatically to it
 ```
 --track ensures the local and the remote branches are connected, so 'merge', 'pull' and 'push' sync them in both directions. 
 
 -b ensures the creation of the local branch.
 #### Commit your work
-1. Update branch
+i. Update branch
 ```
 # Check the branch you are in
 git branch
@@ -53,7 +53,7 @@ git checkout DMA-123
 # Update it
 git pull
 ```
-2. Commit locally
+ii. Commit locally
 ```
 # Always check the current branch and status
 git status
@@ -62,7 +62,7 @@ git add src/library/...
 # Commit the modifications
 git commit
 ```
-3. Push changes to remote
+iii. Push changes to remote
 ```
 # Retrieve the latest information from remote repository
 git fetch
