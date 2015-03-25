@@ -104,6 +104,7 @@ git rebase --continue # in case merge conflict did happen, you have resolved and
 git push origin <branch> --force
 ```
 vi. Squash the Pull Request
+
 _You should always try to use rebase first instead of squashing. Only if you have to many commits mixed with master merges squashing is an alternative!_
 ```
 # create a new branch for squashing into (starting from latest master)
