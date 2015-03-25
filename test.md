@@ -42,7 +42,7 @@ git checkout -b TML-123 # same as "git checkout --track -b DMA-123 origin/DMA-12
 
 -b ensures the creation of the local branch.
 #### Commit your work
-i. Update branch
+1. Update branch
 ```
 # Check the branch you are in
 git branch
@@ -53,7 +53,7 @@ git checkout DMA-123
 # Update it
 git pull
 ```
-ii. Commit locally
+2. Commit locally
 ```
 # Always check the current branch and status
 git status
@@ -62,7 +62,17 @@ git add src/library/...
 # Commit the modifications
 git commit
 ```
-iii. Push changes to remote
+3. Push changes to remote
+```
+# Always check the current branch and status
+git status
+  Your branch is ahead of 'origin/TML-123' by 1 commit
+# Push only your branch modifications
+git push origin TML-123
+# Or push all modified branches
+git push
+```
+4. Merge the latest master
 ```
 # Retrieve the latest information from remote repository
 git fetch
@@ -79,5 +89,6 @@ git merge master
 # via Text Editor, then commit the merge
 git commit -a
 ```
+5. 
 
 
