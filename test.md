@@ -36,13 +36,13 @@ git push origin DMA-123
 First we can list all the branches (-a shows also the remote ones), and then checkout the branch we need (checkout will switch to the just created branch).
 ```
 git branch -a
-git checkout -b TML-123 # same as "git checkout --track -b DMA-123 origin/DMA-123", if a local branch does not exists with this name yet but a remote one does then git creates the local branch and tracks them automatically to it
+git checkout -b DMA-123 # same as "git checkout --track -b DMA-123 origin/DMA-123", if a local branch does not exists with this name yet but a remote one does then git creates the local branch and tracks them automatically to it
 ```
 --track ensures the local and the remote branches are connected, so 'merge', 'pull' and 'push' sync them in both directions. 
 
 -b ensures the creation of the local branch.
 #### Commit your work
-1. Update branch
+i. Update branch
 ```
 # Check the branch you are in
 git branch
@@ -53,7 +53,7 @@ git checkout DMA-123
 # Update it
 git pull
 ```
-2. Commit locally
+ii. Commit locally
 ```
 # Always check the current branch and status
 git status
@@ -62,17 +62,17 @@ git add src/library/...
 # Commit the modifications
 git commit
 ```
-3. Push changes to remote
+iii. Push changes to remote
 ```
 # Always check the current branch and status
 git status
-  Your branch is ahead of 'origin/TML-123' by 1 commit
+  Your branch is ahead of 'origin/DMA-123' by 1 commit
 # Push only your branch modifications
-git push origin TML-123
+git push origin DMA-123
 # Or push all modified branches
 git push
 ```
-4. Merge the latest master
+iv. Merge the latest master
 ```
 # Retrieve the latest information from remote repository
 git fetch
@@ -89,6 +89,42 @@ git merge master
 # via Text Editor, then commit the merge
 git commit -a
 ```
-5. 
-
+v. Rebase commits
+```
+git rebase -i master # combines all commits which are just in the branch and not in the master
+# first commit should be 'pick', all the other ones should be 'squash'
+ 
+# optional: if you have to resolve conflicts, fix them, git add the resulted file, and 
+vim <file-to-fix>
+git rebase --continue # in case merge conflict did happen, you have resolved and want to continue
+ 
+# run now the integration tests again before you push your branch to github
+ 
+# forces the push off the local branch to remote repository by overwriting with local commits
+git push origin <branch> --force
+```
+vi. Squash the Pull Request
+_You should always try to use rebase first instead of squashing. Only if you have to many commits mixed with master merges squashing is an alternative!_
+```
+# create a new branch for squashing into (starting from latest master)
+git checkout master
+git pull
+git checkout -b <local-squash-branch>    # <local-squash-branch> could be whatever you want
+ 
+# squash your branch into
+git merge --squash <original-remote-branch>
+ 
+# Your files are merged, but not committed yet:
+# 1) Solve any conflict in your code (if there are any, check with 'git status')
+# 2) Run the unit and integration tests
+# Finally you can commit the squashed result
+git commit -a -m "DMA-123: Ticket description"    # ATTENTION: this commit message will appear in the master!! and make sure the '-a' is present as argument
+ 
+# do a force push to the <original-remote-branch>
+git push --force origin <local-squash-branch>:<original-remote-branch>
+ 
+# clean up your local git repo
+git checkout master
+git branch -D <local-squash-branch>
+```
 
