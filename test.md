@@ -105,7 +105,7 @@ git push origin <branch> --force
 ```
 vi. Squash the Pull Request
 
-_You should always try to use rebase first instead of squashing. Only if you have to many commits mixed with master merges squashing is an alternative!_
+_You should always try to use rebase first instead of squashing. Only if you have too many commits mixed with master merges squashing is an alternative!_
 ```
 # create a new branch for squashing into (starting from latest master)
 git checkout master
